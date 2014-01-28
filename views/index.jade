@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  h1 From exemple
+  form(id='nickForm')
+   fieldset
+    legend Add a user
+    p
+      lable(for="nickname") Frist name
+      input(id='nickname')
+    p
+      input.btn(type='submit',value='Submit')
+  form(id='send-message')
+   textarea(id='message')
+   input(type='submit', value="submit")
+  section(id="nicknames")
+   ul
+  section(id="messages")
+   
+
+     
+
+  

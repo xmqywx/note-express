@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/demo.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+   div.container
+    section.main
+     form#login_form.form-1(action="login.action",method="post")
+      p.field  
+       input(placeholder='Username or email',name='name',type='text')
+       i.icon-user.icon-large
+      p.field  
+       input(placeholder='Password',type='password',name='password')
+       i.icon-lock.icon-large
+      p.submit
+       button(type="submit",name="submit")
+        i.icon-arrow-right.icon-large
