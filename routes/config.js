@@ -1,6 +1,6 @@
-var loginAction=require("./action/loginAction/loginAction");
+var loginAction=require("./login");
 
-exports.action=function(app){
-	loginAction.login(app);
-	//userAction.userAction(app);
+module.exports=function(app){
+	loginAction(app);
+
 };

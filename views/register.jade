@@ -1,0 +1,48 @@
+doctype html
+html
+    head
+        title Register
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+        link(rel='stylesheet', href='/stylesheets/demo1.css')
+        link(rel='stylesheet', href='/stylesheets/style3.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(type="text/javascript" src="/javascript/modernizr.custom.04022.js")
+
+    body
+        div.container
+            section.af-wrapper
+                h3 Random Form
+                input.af-show-input(id="af-showreq"  type="checkbox" name="showreq")
+                label.af-show(for="af-showreq" ) Pop out required fields
+                form.af-form#af-form(action="register.action" method="post")
+                    div.af-outer.af-required
+                        div.af-inner
+                            label(for="input-name") Name
+                            input(type="text" name="name" id="input-name" required)
+                    div.af-outer.af-required
+                        div.af-inner
+                            label(for="input-title") Password
+                            input(type="password" name="password" id="input-title")
+                    div.af-outer.af-required
+                        div.af-inner
+                            label(for="input-email") Email
+                            input(type="email" name="email" id="input-email" required)
+                    div.af-outer
+                        div.af-inner
+                            label(for="input-bdate") Birth Date
+                            input(type="date" name="brithday" id="input-bdate" placeholder="MM/DD/YYYY")
+                    div.af-outer.af-required
+                        div.af-inner
+                            label(for="input-phone") Sex
+                            input(type="email" name="sex" id="input-phone")
+                    div.af-outer.af-required
+                        div.af-inner
+                            label(for="input-country") Mobile
+                            input(type="email" name="Mobile" id="input-country" required)
+                    div.af-outer
+                        div.af-inner
+                            label(for="input-catname") QQ
+                            input(type="email" name="qq" id="input-catname")
+
+                    input(type="submit" value="Send it over!")

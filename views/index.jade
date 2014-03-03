@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1  #{title}
+  p Welcome to #{locals.user}
   h1 From exemple
   form(id='nickForm')
    fieldset
@@ -18,7 +18,7 @@ block content
   section(id="nicknames")
    ul
   section(id="messages")
-   
+  include footer 
 
      
 

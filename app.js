@@ -16,19 +16,36 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
+app.use(express.cookieParser());
+app.use(express.cookieSession({secret : 'kris'}));
+app.use(express.session( { path: '/', httpOnly: true, maxAge: 600000 }));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public'))); 
+app.use(function (req, res, next) {
+	console.log("---------------------"+req.session.name);
+    app.locals.user = req.session.name;
+    next();
+});
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+//登录拦截器
+app.use(function (req, res, next) {
+    var url = req.originalUrl;
+    if (url != "/login" && !req.session.user) {
+        return res.redirect("/login");
+    }
+    next();
+});
 routes.route(app);
+
 
 var server=http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

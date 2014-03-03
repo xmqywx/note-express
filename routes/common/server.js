@@ -8,4 +8,4 @@ var conn = mysql.createPool({
 });
 
 
-exports.conn = conn;
+module.exports= conn;

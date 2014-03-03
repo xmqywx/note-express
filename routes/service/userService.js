@@ -1,6 +1,7 @@
+var conn=require("../common/server");
 var selectSQL = 'select * from user limit 10';
-var search=function(){
-	pool.getConnection(function (err, conn) {
+search=function(){
+	conn.getConnection(function (err, conn) {
 	    if (err) console.log("POOL ==> " + err);
 	
 	    conn.query(selectSQL,function(err,rows){
@@ -14,8 +15,8 @@ var search=function(){
 	});
 
 };
-var insert=function(username){
-	pool.getConnection(function(err,conn){
+insert=function(username){
+	conn.getConnection(function(err,conn){
 		if (err) console.log("POOL ==> " + err);
 	    var insertSQL= 'insert  into user(name) values ("'+username+'")';
 	    conn.query(insertSQL,function(err,rows){
@@ -25,4 +26,21 @@ var insert=function(username){
 	        conn.release();
 	    });	
 	});
+};
+exports.searchByname=function(username,callback){
+	conn.getConnection(function (err, conn) {
+		var password;
+		if (err) console.log("POOL ==> " + err);
+	    var ff=conn.query("select password from user where name=?",username,function(err,rows){
+	        if (err) console.log(err);
+	        if(rows.length!=0){
+	        	password= rows[0].password;
+	        }else{
+	        	password= "";
+	        }
+	        callback(password);
+	        conn.release();
+	    });
+    });
+    
 };
